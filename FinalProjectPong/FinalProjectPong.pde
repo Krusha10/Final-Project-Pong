@@ -52,9 +52,21 @@ Shape instrctions = new Shape(width, height*1/4, 500, 450) {
       size = size * 0.9;
       textSize(size);
     }//End While
-    //size = size * 0.15; //Additional decrease for Font
     return size;
   }//End textCalculator
+  //
+  float xGetter() {
+    return x;
+  }
+  float yGetter() {
+    return y;
+  }
+  float wGetter() {
+    return w;
+  }
+  float hGetter() {
+    return h;
+  }
 }
 ;//End instrctions
 //
@@ -85,6 +97,10 @@ void draw() {
   //
   if (instructionOn == false) {
     println("WOOOOOOOOOOOOOOOO");
+    //
+    for (int i = 1; i < shapes.size(); i++) {
+      shapes.get(i).draw();
+    }//End for loop
   }
 }//End draw
 //
@@ -96,6 +112,40 @@ void keyPressed() {
       instructionOn = true;
     }
   }//End if
+  //
+  //
+  if (key == CODED && key == 'W' || key == 'w') {
+    Paddles leftPaddle = new Paddles(shapes.get(1).xGetter(), shapes.get(1).yGetter(), shapes.get(1).wGetter(), shapes.get(1).hGetter());
+    leftPaddle.upMovementPaddles();
+    shapes.set(1, leftPaddle);
+  }//End W key
+  if (key == CODED && key == 'S' || key == 's') {
+    Paddles leftPaddle = new Paddles(shapes.get(1).xGetter(), shapes.get(1).yGetter(), shapes.get(1).wGetter(), shapes.get(1).hGetter());
+    leftPaddle.downMovementPaddles();
+    shapes.set(1, leftPaddle);
+  }//End S key
+  if (key == CODED && key == 'D' || key == 'd') {
+    Paddles paddleStop = new Paddles(shapes.get(1).xGetter(), shapes.get(1).yGetter(), shapes.get(1).wGetter(), shapes.get(1).hGetter());
+    paddleStop.stopPaddle();
+    shapes.set(1, paddleStop);
+  }//End D key
+  //
+  //RightPaddle, element 1
+  if (key == CODED && keyCode == UP) {
+    Paddles rightPaddle = new Paddles(shapes.get(2).xGetter(), shapes.get(2).yGetter(), shapes.get(2).wGetter(), shapes.get(2).hGetter());
+    rightPaddle.upMovementPaddles();
+    shapes.set(2, rightPaddle);
+  }//End Up key
+  if (key == CODED && keyCode == DOWN) {
+    Paddles rightPaddle = new Paddles(shapes.get(2).xGetter(), shapes.get(2).yGetter(), shapes.get(2).wGetter(), shapes.get(2).hGetter());
+    rightPaddle.downMovementPaddles();
+    shapes.set(2, rightPaddle);
+  }//End Down key
+  if (key == CODED && keyCode == LEFT) {
+    Paddles paddleStop = new Paddles(shapes.get(2).xGetter(), shapes.get(2).yGetter(), shapes.get(2).wGetter(), shapes.get(2).hGetter());
+    paddleStop.stopPaddle();
+    shapes.set(2, paddleStop);
+  }//End Left key
 }//End keyPressed
 //
 void mousePressed() {

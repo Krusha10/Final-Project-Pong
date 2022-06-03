@@ -3,7 +3,7 @@ abstract class Shape {
   public float x, y, w, h;
   //
   //Constructor 
-  Shape(float x, float y, float w, float h) {
+  private Shape(float x, float y, float w, float h) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -13,4 +13,8 @@ abstract class Shape {
   public abstract void draw();
   //
   //Common Methods
+  abstract float xGetter();
+  abstract float yGetter();
+  abstract float wGetter();
+  abstract float hGetter();
 }//End Shape
