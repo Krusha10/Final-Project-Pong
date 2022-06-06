@@ -55,6 +55,10 @@ Shape instrctions = new Shape(width, height*1/4, 500, 450) {
     return size;
   }//End textCalculator
   //
+  void leftPaddleBounce(float x, float y, float h, float w) {
+  }
+  void rightPaddleBounce(float x, float y, float h) {
+  }
   float xGetter() {
     return x;
   }
@@ -97,6 +101,8 @@ void draw() {
   //
   if (instructionOn == false) {
     println("WOOOOOOOOOOOOOOOO");
+    shapes.get(3).leftPaddleBounce(shapes.get(1).xGetter(), shapes.get(1).yGetter(), shapes.get(1).hGetter(), shapes.get(1).wGetter());
+    shapes.get(3).rightPaddleBounce(shapes.get(2).xGetter(), shapes.get(2).yGetter(), shapes.get(2).hGetter());
     //
     for (int i = 1; i < shapes.size(); i++) {
       shapes.get(i).draw();

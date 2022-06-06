@@ -46,6 +46,10 @@ class Paddles extends Shape {
   //
   //
   //Getters
+  void leftPaddleBounce(float x, float y, float h, float w) {
+  }
+  void rightPaddleBounce(float x, float y, float h) {
+  }
   float xGetter() {
     return x;
   }

@@ -13,6 +13,8 @@ abstract class Shape {
   public abstract void draw();
   //
   //Common Methods
+  abstract void leftPaddleBounce(float x, float y, float h, float w);
+  abstract void rightPaddleBounce(float x, float y, float h);
   abstract float xGetter();
   abstract float yGetter();
   abstract float wGetter();
