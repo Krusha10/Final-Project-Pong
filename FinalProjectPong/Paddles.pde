@@ -1,12 +1,12 @@
-class Paddles extends Shape {
+final class Paddles extends Shape {
   //Global variables
-  private Boolean moveUp, moveDown;
-  private int yMove;
+  private Boolean moveUp, moveDown, screenSaver = false, singlePlayer = false;
+  private int yMove, paddleSpeed = 0;
   //
   //Constructor 
   private Paddles (float x, float y, float w, float h) {
     super(x, y, w, h);
-    this.yMove = 5;
+    this.yMove = 0;
     this.moveUp = false;
     this.moveDown = false;
   }//End Constructor 
@@ -15,9 +15,31 @@ class Paddles extends Shape {
     fill(#FFF640);
     rect(x, y, w, h);
     paddleMove();
+    paddlekeyPressed();
   }//End draw
   //
-  void paddleMove() {
+  void paddlekeyPressed(){
+    if (paddleSpeed == 0 ){
+      if (key=='C' || key=='c') paddleSpeed = 2;
+      if (key=='L' || key=='l') paddleSpeed = 5;
+      if (key=='O' || key=='o') paddleSpeed = 10;
+      this.yMove = int((height / height) * paddleSpeed);
+    }
+  }
+  //
+  /*
+  void playingModes(float xBallMove, float yBallMove) {
+    if (screenSaver == true) {
+      y = yBallMove-h*1/2;
+      y = yBallMove-h*1/2;
+    }
+    if (singlePlayer == true) {
+      y = yBallMove - h*1/2;
+    }
+  }
+  */
+  //
+  private void paddleMove() {
     if (moveUp == true) y -= yMove;
     if (moveDown == true) y += yMove;
     //
@@ -29,15 +51,15 @@ class Paddles extends Shape {
   }//End paddleMove
   //
   //Setters
-  void upMovementPaddles() {
+  private void upMovementPaddles() {
     moveUp = true;
     moveDown = false;
   }//End upMovementPaddle 
-  void downMovementPaddles() {
+  private void downMovementPaddles() {
     moveUp = false;
     moveDown = true;
   }//End downMovementPaddle
-  void stopPaddle() {
+  private void stopPaddle() {
     moveUp = false;
     moveDown = false;
   }//End stopPaddle

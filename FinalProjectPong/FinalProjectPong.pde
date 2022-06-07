@@ -71,6 +71,7 @@ Shape instrctions = new Shape(width, height*1/4, 500, 450) {
   float hGetter() {
     return h;
   }
+  //void playingModes(float x, float y) {}
 }
 ;//End instrctions
 //

@@ -15,6 +15,7 @@ abstract class Shape {
   //Common Methods
   abstract void leftPaddleBounce(float x, float y, float h, float w);
   abstract void rightPaddleBounce(float x, float y, float h);
+  //abstract void playingModes(float x, float y) ;
   abstract float xGetter();
   abstract float yGetter();
   abstract float wGetter();

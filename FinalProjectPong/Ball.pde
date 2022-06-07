@@ -1,4 +1,4 @@
-class Ball extends Shape {
+final class Ball extends Shape {
   //Global variables
   private float diameter;
   private int xSpeed, ySpeed, speedBall = 0;
@@ -23,7 +23,7 @@ class Ball extends Shape {
   //
   private void ballSpeed() {
     if (speedBall == 0 ) {
-      if (key=='S' || key=='s') speedBall = 2;
+      if (key=='X' || key=='x') speedBall = 2;
       if (key=='R' || key=='r') speedBall = 5;
       if (key=='F' || key=='f') speedBall = 10;
       this.xSpeed = int((width / width) * speedBall);
@@ -49,10 +49,10 @@ class Ball extends Shape {
   //Common methods
   //
   //Getters
-  void leftPaddleBounce( float xPaddleLeft, float yPaddleLeft, float paddleHeight, float paddleWidth) {
+  public void leftPaddleBounce( float xPaddleLeft, float yPaddleLeft, float paddleHeight, float paddleWidth) {
     if ( x < xPaddleLeft + paddleWidth + (diameter*1/2) && y > yPaddleLeft && y < yPaddleLeft+paddleHeight ) xSpeed *= -1;
   }
-  void rightPaddleBounce( float xPaddleRight, float yPaddleRight, float paddleHeight) {
+  public void rightPaddleBounce( float xPaddleRight, float yPaddleRight, float paddleHeight) {
     if ( x >= xPaddleRight-w*1/2 && y > yPaddleRight && y < yPaddleRight+paddleHeight ) xSpeed *=-1;
   }
   float xGetter() {
@@ -67,4 +67,5 @@ class Ball extends Shape {
   float hGetter() {
     return h;
   }
+  //void playingModes(float x, float y) {}
 }//End Ball
