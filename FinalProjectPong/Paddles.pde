@@ -6,7 +6,7 @@ final class Paddles extends Shape {
   //Constructor 
   private Paddles (float x, float y, float w, float h) {
     super(x, y, w, h);
-    this.yMove = 0;
+    this.yMove = 5;
     this.moveUp = false;
     this.moveDown = false;
   }//End Constructor 
@@ -14,20 +14,22 @@ final class Paddles extends Shape {
   public void draw() {
     fill(#FFF640);
     rect(x, y, w, h);
+    //paddlesSpeed();
     paddleMove();
-    paddlekeyPressed();
   }//End draw
   //
-  void paddlekeyPressed(){
-    if (paddleSpeed == 0 ){
-      if (key=='C' || key=='c') paddleSpeed = 2;
-      if (key=='L' || key=='l') paddleSpeed = 5;
-      if (key=='O' || key=='o') paddleSpeed = 10;
-      this.yMove = int((height / height) * paddleSpeed);
-    }
-  }
-  //
   /*
+  private void paddlesSpeed(){
+    if (paddleSpeed == 0 ) {
+      if (key=='L' || key=='l') paddleSpeed = 2;
+      if (key=='M' || key=='m') paddleSpeed = 5;
+      if (key=='N' || key=='n') paddleSpeed = 10;
+      this.yMove = int((height / height) * paddleSpeed);
+      println("{" + paddleSpeed + "}");
+    }
+  }//End ballSpeed
+  //
+  
   void playingModes(float xBallMove, float yBallMove) {
     if (screenSaver == true) {
       y = yBallMove-h*1/2;

@@ -1,6 +1,6 @@
 //Global Variables
-ArrayList<Shape> shapes = new ArrayList<Shape>();
-Boolean instructionOn = true;
+private ArrayList<Shape> shapes = new ArrayList<Shape>();
+private Boolean instructionOn = true;
 //
 Shape instrctions = new Shape(width, height*1/4, 500, 450) {
   //Global variables 
