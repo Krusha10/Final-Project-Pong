@@ -11,6 +11,7 @@ Shape instrctions = new Shape(width, height*1/4, 500, 450) {
   color darkPinkInk = #D65083;
   color resetColor = #000000;
   //
+  //Two void draws to be fixed 
   void draw() {
     textSetup();
     fill(#FAF688);
