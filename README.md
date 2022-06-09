@@ -35,7 +35,7 @@ Paddles Class:
 
 - First the instruction panel will appear describing how to play Pong.
     - Click on the screen and press the key "I" or "i" to remove the instruction panel.
-    - If you need to read the instructions again press the key "I" or "i" and the instruction panel will reappear.
+    - If you need to read the instructions again, press the key "I" or "i" and the instruction panel will reappear.
 - The ball speed is controlled by keys.
     - Press the key "X" or "x" for slow speed and easy game.
     - Press the key "R" or "r" for medium speed and regular game.
