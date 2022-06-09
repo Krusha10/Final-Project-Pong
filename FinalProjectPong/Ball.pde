@@ -39,8 +39,8 @@ final class Ball extends Shape {
   //
   private void bounceBall() { //Bounce off the sides 
     if (x - diameter*1/2 < width*0 || x + diameter*1/2 > width) {
-      xSpeed *= 0; 
-      ySpeed *= 0;
+      //xSpeed *= 0; 
+      //ySpeed *= 0;
       x = width*1/2;
       y = height*1/2;
     }
@@ -119,6 +119,8 @@ final class Ball extends Shape {
   //Common methods
   //
   //Getters
+  void scoreObjects(int rightGoalScore, int leftGoalScore) {
+  }
   public void leftPaddleBounce( float xPaddleLeft, float yPaddleLeft, float paddleHeight, float paddleWidth) {
     if ( x < xPaddleLeft + paddleWidth + (diameter*1/2) && y > yPaddleLeft && y < yPaddleLeft+paddleHeight ) xSpeed *= -1;
   }
@@ -136,6 +138,12 @@ final class Ball extends Shape {
   }
   float hGetter() {
     return h;
+  }
+  int scoreLGetter() {
+    return rightGoalScore;
+  }
+  int scoreRGetter() {
+    return leftGoalScore;
   }
   //void playingModes(float x, float y) {}
 }//End Ball

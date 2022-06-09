@@ -19,7 +19,6 @@ Shape instrctions = new Shape(width, height*1/4, 500, 450) {
     //Text code here:
     fill(#FFFFFF);//Reset color
     textDraw( h, darkPinkInk, CENTER, CENTER, titleFont, note, x, y, w, h );
-    //textDraw( h, darkPinkInk, CENTER, CENTER, titleFont, notes1, x, y, w, h );
   }
   //Methods for possible text drawing
   //
@@ -59,6 +58,8 @@ Shape instrctions = new Shape(width, height*1/4, 500, 450) {
   void leftPaddleBounce(float x, float y, float h, float w) {
   }
   void rightPaddleBounce(float x, float y, float h) {
+  }
+  void scoreObjects(int rightGoalScore, int leftGoalScore) {
   }
   float xGetter() {
     return x;

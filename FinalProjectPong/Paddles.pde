@@ -86,4 +86,9 @@ final class Paddles extends Shape {
   float hGetter() {
     return h;
   }
+  void scoreObjects(int rightScore, int leftScore) {
+    if (leftScore == 2 || rightScore == 2) h = int(height*1/5);
+    if (leftScore == 3 || rightScore == 3) h = int(height*1/6); 
+    if (leftScore == 4 || rightScore == 4) h = int(height*1/7);
+  }
 }//End Paddles
