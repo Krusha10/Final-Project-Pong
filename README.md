@@ -39,13 +39,13 @@ Paddles Class:
 - The ball speed is controlled by keys.
     - Press the key "X" or "x" for slow speed and easy game.
     - Press the key "R" or "r" for medium speed and regular game.
-    - Press the key "F" or "f" for fast speed and challenging game.
+    - Press the key "F" or "f" for faster speed and challenging game.
 - Movement of the paddles are also controlled by the keys.
-    - Right Paddles key controls:
+    - Right Paddle key controls:
         - "UP" key moves the paddle upwards.
         - "DOWN" key moves the paddle downwards.
         - "Left" key stopes the paddle.
-    - Left Paddles key controls:
+    - Left Paddle key controls:
         - "W" and "w" keys moves the paddle upwards.
         - "S" and "s" keys moves the paddle downwards.
         - "D" and "d" keys stopes the paddle.
