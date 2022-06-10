@@ -1,36 +1,68 @@
 final class Ball extends Shape {
   //Global variables
-  private float diameter;
+  private float diameter, buttonX, buttonY, buttonW, buttonH;
   private int xSpeed, ySpeed, speedBall = 0, leftGoalScore = 0, rightGoalScore = 0;
   private color resetColor = #FFFFFF;
+  private boolean buttonOver = false, ballSpeedEasy;
   private boolean xLeftBallGoal = false, xRightBallGoal = false;
   //
   //Constructor 
   private Ball (float x, float y, float w, float h) {
     super(x, y, w, h);
     diameter = w;
+    buttonX = x;
+    buttonY = y;
+    buttonW = w;
+    buttonH = h;
     this.xSpeed = int(random(1, 10));
     this.ySpeed = int(random(1, 10));
   }//End Constructor 
   //
   public void draw() {
+    update(mouseX, mouseY);
+    if (buttonOver) {
+      fill(gray);
+    } else {
+      fill(pink);
+    }
+    rect(buttonX, buttonY, buttonW + width*1/10, buttonH);
     fill(#FFF640);
     ellipse(x, y, w, h);
     fill(resetColor);
-    ballSpeed();
+    //ballSpeed();
     ballMove();
     bounceBall();
   }//End draw
-  //
-  private void ballSpeed() {
-    if (speedBall == 0 ) {
-      if (key=='X' || key=='x') speedBall = 2;
-      if (key=='R' || key=='r') speedBall = 5;
-      if (key=='F' || key=='f') speedBall = 10;
-      this.xSpeed = int((width / width) * speedBall);
-      this.ySpeed = int((height / height) * speedBall);
+  //BUTTON TO BE MADE:
+  void update(float x, float y) {
+    if (overButton(buttonX, buttonY, buttonW + width*1/10, buttonH)) {
+      buttonOver = true;
+    } else {
+      buttonOver = false;
     }
-  }//End ballSpeed
+  }
+  //
+  boolean overButton(int x, int y, int width, int height)  {
+    if (mouseX >= x && mouseX <= x+width && mouseY >= y && mouseY <= y+height) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  //
+  /*
+  private void ballSpeed() {
+   if (speedBall == 0 ) {
+   if (key=='X' || key=='x') speedBall = 2;
+   if (key=='R' || key=='r') speedBall = 5;
+   if (key=='F' || key=='f') speedBall = 10;
+   this.xSpeed = int((width / width) * speedBall);
+   this.ySpeed = int((height / height) * speedBall);
+   }
+   }//End ballSpeed
+   //
+   */
+  //
   //
   private void ballMove() {
     x += xSpeed;
