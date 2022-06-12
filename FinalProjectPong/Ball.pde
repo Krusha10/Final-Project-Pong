@@ -1,6 +1,7 @@
 final class Ball extends Shape {
   //Global variables
   private float diameter, buttonX, buttonY, buttonW, buttonH;
+  private float buttonWidth, buttonHeight;
   private int xSpeed, ySpeed, speedBall = 0, leftGoalScore = 0, rightGoalScore = 0;
   private color resetColor = #FFFFFF;
   private boolean buttonOver = false, ballSpeedEasy;
@@ -10,22 +11,18 @@ final class Ball extends Shape {
   private Ball (float x, float y, float w, float h) {
     super(x, y, w, h);
     diameter = w;
-    buttonX = x;
-    buttonY = y;
-    buttonW = w;
-    buttonH = h;
-    this.xSpeed = int(random(1, 10));
-    this.ySpeed = int(random(1, 10));
+    //buttonX = x;
+    //buttonY = y;
+    //buttonW = w;
+    //buttonH = h;
+    buttonWidth = width / 5;
+    buttonHeight = width / 0.05;
+    //this.xSpeed = int(random(1, 10));
+    //this.ySpeed = int(random(1, 10));
   }//End Constructor 
   //
   public void draw() {
-    update(mouseX, mouseY);
-    if (buttonOver) {
-      fill(gray);
-    } else {
-      fill(pink);
-    }
-    rect(buttonX, buttonY, buttonW + width*1/10, buttonH);
+    ballSpeedEasy = speedButton("Easy Speed", width - buttonWidth - 10, buttonHeight + 20, buttonWidth, buttonHeight);
     fill(#FFF640);
     ellipse(x, y, w, h);
     fill(resetColor);
@@ -34,21 +31,36 @@ final class Ball extends Shape {
     bounceBall();
   }//End draw
   //BUTTON TO BE MADE:
-  void update(float x, float y) {
-    if (overButton(buttonX, buttonY, buttonW + width*1/10, buttonH)) {
-      buttonOver = true;
-    } else {
-      buttonOver = false;
+  //
+  void speedControl() {
+    if (ballSpeedEasy) {
+      speedBall = 2;
+      this.xSpeed = int((width / width) * speedBall);
+      this.ySpeed = int((height / height) * speedBall);
     }
+  }//End speedControl
+  //
+  boolean mouseInArea(float xButton, float yButton, float wButton, float hButton) {
+    return (mouseX >= xButton && mouseX <= xButton + wButton && mouseY >= yButton && mouseY <= yButton + hButton);
   }
   //
-  boolean overButton(int x, int y, int width, int height)  {
-    if (mouseX >= x && mouseX <= x+width && mouseY >= y && mouseY <= y+height) {
-      return true;
-    } else {
-      return false;
+  boolean speedButton(String tag, float xButton, float yButton, float wButton, float hButton) {
+    boolean hover = mouseInArea(xButton, yButton, wButton, hButton);
+    fill(#69D364);
+    rect(xButton, yButton, wButton, hButton);
+    fill(0);
+    float sizeOfText = hButton/4;
+    textSize(sizeOfText);
+    while (textWidth(tag) > wButton) textSize(sizeOfText--);
+    text(tag, xButton + wButton / 2, (yButton + hButton / 2) - textDescent() / 2);
+    if (hover)
+    {
+      fill(255, 255, 255, 100);
+      rect(xButton, yButton, wButton, hButton);
     }
-  }
+    return hover;
+  }//End 
+  //
   //
   /*
   private void ballSpeed() {
