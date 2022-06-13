@@ -78,8 +78,8 @@ Shape instrctions = new Shape(width, height*1/4, 500, 450) {
 ;//End instrctions
 //
 void setup() {
-  size(700, 500);
-  //fullScreen();
+  //size(700, 500);
+  fullScreen();
   //INSTRUCTIONS: 
   shapes.add(instrctions);//Element 0
   //
