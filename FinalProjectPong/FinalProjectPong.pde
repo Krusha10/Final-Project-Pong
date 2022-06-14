@@ -10,6 +10,7 @@ Shape instrctions = new Shape(width, height*1/4, 500, 450) {
   //
   color darkPinkInk = #D65083;
   color resetColor = #000000;
+  int rightGoalScore, leftGoalScore;
   //
   //Two void draws to be fixed 
   void draw() {
@@ -73,13 +74,19 @@ Shape instrctions = new Shape(width, height*1/4, 500, 450) {
   float hGetter() {
     return h;
   }
+  int scoreLGetter() {
+    return rightGoalScore;
+  }
+  int scoreRGetter() {
+    return leftGoalScore;
+  }
   //void playingModes(float x, float y) {}
 }
 ;//End instrctions
 //
 void setup() {
-  //size(700, 500);
-  fullScreen();
+  size(700, 500);
+  //fullScreen();
   //INSTRUCTIONS: 
   shapes.add(instrctions);//Element 0
   //
@@ -96,7 +103,7 @@ void setup() {
   shapes.add(leftRec);//Element 1
   shapes.add(rightRec);//Element 2
   shapes.add(circle);//Element 3
-  shapes.add(objectSpeed);
+  //shapes.add(objectSpeed);
 }//End setup
 //
 void draw() {
@@ -108,6 +115,8 @@ void draw() {
     println("WOOOOOOOOOOOOOOOO");
     shapes.get(3).leftPaddleBounce(shapes.get(1).xGetter(), shapes.get(1).yGetter(), shapes.get(1).hGetter(), shapes.get(1).wGetter());
     shapes.get(3).rightPaddleBounce(shapes.get(2).xGetter(), shapes.get(2).yGetter(), shapes.get(2).hGetter());
+    shapes.get(1).scoreObjects(shapes.get(3).scoreRGetter(), shapes.get(3).scoreLGetter());
+    shapes.get(2).scoreObjects(shapes.get(3).scoreRGetter(), shapes.get(3).scoreLGetter());
     //
     for (int i = 1; i < shapes.size(); i++) {
       shapes.get(i).draw();

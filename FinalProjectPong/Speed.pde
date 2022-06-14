@@ -2,7 +2,7 @@ final class Speed extends Shape {
   //Global Variables
   private boolean buttonOver = false, ballSpeedEasy;
   private float buttonWidth, buttonHeight;
-  private int ySpeed = 0, speed = 0;
+  private int ySpeed = 0, speed = 0, rightGoalScore, leftGoalScore;
   //
   //Constructor 
   private Speed (float x, float y, float w, float h) {
@@ -24,7 +24,7 @@ final class Speed extends Shape {
   }//End speedControl
   //
   boolean mouseInArea(float xButton, float yButton, float wButton, float hButton) {
-    return (mouseX >= xButton && mouseX <= xButton + wButton && mouseY >= yButton && mouseY <= yButton + hButton);
+    return (mouseX > xButton && mouseX < xButton + wButton && mouseY > yButton && mouseY < yButton + hButton);
   }
   //
   boolean speedButton(String tag, float xButton, float yButton, float wButton, float hButton) {
@@ -63,5 +63,11 @@ final class Speed extends Shape {
   }
   float hGetter() {
     return h;
+  }
+  int scoreLGetter() {
+    return rightGoalScore;
+  }
+  int scoreRGetter() {
+    return leftGoalScore;
   }
 }//End Speed

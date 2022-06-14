@@ -21,4 +21,6 @@ abstract class Shape {
   abstract float yGetter();
   abstract float wGetter();
   abstract float hGetter();
+  abstract int scoreLGetter();
+  abstract int scoreRGetter();
 }//End Shape

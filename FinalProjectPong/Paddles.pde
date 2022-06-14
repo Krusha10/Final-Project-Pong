@@ -1,7 +1,7 @@
 final class Paddles extends Shape {
   //Global variables
   private Boolean moveUp, moveDown, screenSaver = false, singlePlayer = false;
-  private int yMove, paddleSpeed = 0;
+  private int yMove, paddleSpeed = 0, rightGoalScore, leftGoalScore;
   //
   //Constructor 
   private Paddles (float x, float y, float w, float h) {
@@ -18,28 +18,6 @@ final class Paddles extends Shape {
     paddleMove();
   }//End draw
   //
-  /*
-  private void paddlesSpeed(){
-    if (paddleSpeed == 0 ) {
-      if (key=='L' || key=='l') paddleSpeed = 2;
-      if (key=='M' || key=='m') paddleSpeed = 5;
-      if (key=='N' || key=='n') paddleSpeed = 10;
-      this.yMove = int((height / height) * paddleSpeed);
-      println("{" + paddleSpeed + "}");
-    }
-  }//End ballSpeed
-  //
-  
-  void playingModes(float xBallMove, float yBallMove) {
-    if (screenSaver == true) {
-      y = yBallMove-h*1/2;
-      y = yBallMove-h*1/2;
-    }
-    if (singlePlayer == true) {
-      y = yBallMove - h*1/2;
-    }
-  }
-  */
   //
   private void paddleMove() {
     if (moveUp == true) y -= yMove;
@@ -85,6 +63,12 @@ final class Paddles extends Shape {
   }
   float hGetter() {
     return h;
+  }
+  int scoreLGetter() {
+    return rightGoalScore;
+  }
+  int scoreRGetter() {
+    return leftGoalScore;
   }
   void scoreObjects(int rightScore, int leftScore) {
     if (leftScore == 2 || rightScore == 2) h = int(height*1/5);

@@ -1,14 +1,20 @@
 final class Ball extends Shape {
   //Global variables
-  private float diameter;
-  private int xSpeed, ySpeed, leftGoalScore = 0, rightGoalScore = 0;
+  private float diameter, xButton, yButton, wButton, hButton, buttonWidth, buttonHeight;
+  private int xSpeed, ySpeed, leftGoalScore = 0, rightGoalScore = 0, speed = 0, speedBall = 0;
   private color resetColor = #FFFFFF;
-  private boolean xLeftBallGoal = false, xRightBallGoal = false;
+  private boolean xLeftBallGoal = false, xRightBallGoal = false, ballSpeedEasy;
   //
   //Constructor 
   private Ball (float x, float y, float w, float h) {
     super(x, y, w, h);
     diameter = w;
+    //xButton = x;
+    //yButton = y;
+    //wButton = w + 1/2;
+    //hButton = h + 1/2;
+    buttonWidth = width / 5;
+    buttonHeight = width / 0.05;
     //this.xSpeed = int(random(1, 10));
     //this.ySpeed = int(random(1, 10));
   }//End Constructor 
@@ -17,7 +23,7 @@ final class Ball extends Shape {
     fill(#FFF640);
     ellipse(x, y, w, h);
     fill(resetColor);
-    //ballSpeed();
+    ballSpeed();
     ballMove();
     bounceBall();
   }//End draw
@@ -26,7 +32,7 @@ final class Ball extends Shape {
   //
   //
   //
-  /*
+  
   private void ballSpeed() {
    if (speedBall == 0 ) {
    if (key=='X' || key=='x') speedBall = 2;
@@ -37,7 +43,7 @@ final class Ball extends Shape {
    }
    }//End ballSpeed
    //
-   */
+   
   //
   //
   private void ballMove() {
@@ -81,7 +87,7 @@ final class Ball extends Shape {
     } else {
       ballMove();
     }
-    
+    //
     textAlign(int(width*1/4), int( height * 1.2));
     textSize(width*1/30);
     fill(#FF9558);
@@ -90,7 +96,6 @@ final class Ball extends Shape {
     textSize(width*1/30);
     fill(#FF9558);
     text(leftGoalScore, width/1.35, width*1/14);
-
   }//End ballScore
   //
   void scoreSetter() {
@@ -133,8 +138,6 @@ final class Ball extends Shape {
   public void rightPaddleBounce( float xPaddleRight, float yPaddleRight, float paddleHeight) {
     if ( x >= xPaddleRight-w*1/2 && y > yPaddleRight && y < yPaddleRight+paddleHeight ) xSpeed *=-1;
   }
-  void scoreObjects(int rightGoalScore, int leftGoalScore) {
-  }
   float xGetter() {
     return x;
   }
@@ -152,6 +155,8 @@ final class Ball extends Shape {
   }
   int scoreRGetter() {
     return leftGoalScore;
+  }
+  void scoreObjects(int rightGoalScore, int leftGoalScore) {
   }
   //void playingModes(float x, float y) {}
 }//End Ball

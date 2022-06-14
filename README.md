@@ -21,12 +21,13 @@ MAIN Program:
 
 Shape Class:
 
--
+- Shape class is an abstract class which is extended by ball class and paddles class.
+- Variables x, y, w, h in shape class is public as those variables are used in other classes. 
 
 Ball Class:
 
 - Ball class is a final class.
-    - As it's not future extended.
+    - As it's not further extended.
     - Class hierarchy breaks there and no other classes extends ball class.
 - Includes private variables which are only used in ball class.
 - Methods are used to controls ball behavior.
@@ -43,12 +44,23 @@ Ball Class:
     - scoreSetter() prints which player wins on canvas.
         - Nested if statement checks if left or right score equals 5.
         - Which ever player scores 5 first, wins and winner is printed on canvas.
-    - At the end common methods, getters, and setters are included for class communication. 
+    - At the end common methods, getters, and setters are included for class communication.
 
 
 Paddles Class:
 
--
+- Paddles is also a final class.
+    - Paddle class is not further extended.
+    - Class hierarchy breaks and no other classes extends paddles class.
+- Paddles class includes private variables which are only used in paddles class.
+- Different methods controls different paddle behaviors.
+    - Public void draw() is used to draw paddles.
+    - private method ballMove() controls paddles movement up and down.
+        - If statement checks if paddle move Up or down is true then yMove is added or subtracted in order to move the paddle.
+        - Few other If statements check if the paddles are going off the screen.
+              - If statement sets the range so the paddle doesn't go off the screen.
+              - Paddle speed is set to 0 if paddle reaches the edge.
+        -
 
 **Instructions On How To Use The Program:**
 
