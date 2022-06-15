@@ -98,12 +98,10 @@ void setup() {
   Paddles leftRec = new Paddles(width*1/40, height*1/3, widthRec, heightRec);
   Paddles rightRec = new Paddles(width*16/17, height*1/3, widthRec, heightRec);
   Ball circle = new Ball(width*1/2, height*1/2, xDiameter, yDiameter);
-  Speed objectSpeed = new Speed(width*1/2, height*1/2, width*1/10, height*1/10);
   //
   shapes.add(leftRec);//Element 1
   shapes.add(rightRec);//Element 2
   shapes.add(circle);//Element 3
-  //shapes.add(objectSpeed);
 }//End setup
 //
 void draw() {
@@ -169,6 +167,7 @@ void keyPressed() {
 }//End keyPressed
 //
 void mousePressed() {
+  //buttonMousePressed();
 }//End mousePressed
 //
 //End Main(driver)

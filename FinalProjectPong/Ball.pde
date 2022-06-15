@@ -1,18 +1,19 @@
 final class Ball extends Shape {
   //Global variables
-  private float diameter, xButton, yButton, wButton, hButton, buttonWidth, buttonHeight;
+  private float diameter, x0Button, y0Button, w0Button, h0Button, buttonWidth, buttonHeight;
   private int xSpeed, ySpeed, leftGoalScore = 0, rightGoalScore = 0, speed = 0, speedBall = 0;
   private color resetColor = #FFFFFF;
+  private PFont buttonTextFont;
   private boolean xLeftBallGoal = false, xRightBallGoal = false, ballSpeedEasy;
   //
   //Constructor 
   private Ball (float x, float y, float w, float h) {
     super(x, y, w, h);
     diameter = w;
-    //xButton = x;
-    //yButton = y;
-    //wButton = w + 1/2;
-    //hButton = h + 1/2;
+    x0Button = x * 1/2;
+    y0Button = y + 1/2;
+    w0Button = w * 2;
+    h0Button = h + 1/2;
     buttonWidth = width / 5;
     buttonHeight = width / 0.05;
     //this.xSpeed = int(random(1, 10));
@@ -23,16 +24,46 @@ final class Ball extends Shape {
     fill(#FFF640);
     ellipse(x, y, w, h);
     fill(resetColor);
-    ballSpeed();
-    ballMove();
-    bounceBall();
+    buttonDraw();
+    //ballSpeed();
+    //ballMove();
+    //bounceBall();
+    ballScore();
   }//End draw
   //BUTTON TO BE MADE:
   //
+  void buttonDraw() {
+    rect(x0Button, y0Button, w0Button, h0Button);
+    if (ballSpeedEasy == true) {
+      this.xSpeed = 2;
+      this.ySpeed = 2;
+    }
+    buttonTextSetUp();
+  }//End buttonDraw
   //
+  void buttonTextSetUp() {
+    buttonTextFont = createFont("Georgia", 50);
+    buttonTextDraw();
+  }
   //
+  void buttonTextDraw() {
+    fill(#6DE5A2);
+    textAlign(CENTER, CENTER);
+    textFont(buttonTextFont, 20);
+    //
+    text("Easy Game", x0Button, y0Button, w0Button, h0Button);
+    fill(resetColor);
+  }
   //
-  
+  void mousePressed() {
+    ballSpeedEasy = false;
+    if ( mouseX>=x0Button && mouseX<=x0Button+w0Button && mouseY>=y0Button && mouseY<=y0Button+h0Button ) {
+      println("CLICKED");
+      ballSpeedEasy = true;
+    }
+  }//End buttonMousePressed
+  //
+  /*
   private void ballSpeed() {
    if (speedBall == 0 ) {
    if (key=='X' || key=='x') speedBall = 2;
@@ -43,7 +74,7 @@ final class Ball extends Shape {
    }
    }//End ballSpeed
    //
-   
+   */
   //
   //
   private void ballMove() {
