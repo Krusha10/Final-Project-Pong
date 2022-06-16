@@ -55,7 +55,7 @@ final class Ball extends Shape {
     fill(resetColor);
   }
   //
-  void mousePressed() {
+  void buttonMousePressed() {
     ballSpeedEasy = false;
     if ( mouseX>=x0Button && mouseX<=x0Button+w0Button && mouseY>=y0Button && mouseY<=y0Button+h0Button ) {
       println("CLICKED");
