@@ -4,7 +4,7 @@ final class Ball extends Shape {
   private int xSpeed, ySpeed, leftGoalScore = 0, rightGoalScore = 0, speed = 0, speedBall = 0;
   private color resetColor = #FFFFFF;
   private PFont buttonTextFont;
-  private boolean xLeftBallGoal = false, xRightBallGoal = false, ballSpeedEasy;
+  private boolean xLeftBallGoal = false, xRightBallGoal = false, ballSpeedEasy = false;
   //
   //Constructor 
   private Ball (float x, float y, float w, float h) {
@@ -25,6 +25,7 @@ final class Ball extends Shape {
     ellipse(x, y, w, h);
     fill(resetColor);
     buttonDraw();
+    buttonTextDraw();
     //ballSpeed();
     //ballMove();
     //bounceBall();
@@ -43,7 +44,6 @@ final class Ball extends Shape {
   //
   void buttonTextSetUp() {
     buttonTextFont = createFont("Georgia", 50);
-    buttonTextDraw();
   }
   //
   void buttonTextDraw() {
@@ -56,7 +56,6 @@ final class Ball extends Shape {
   }
   //
   void buttonMousePressed() {
-    ballSpeedEasy = false;
     if ( mouseX>=x0Button && mouseX<=x0Button+w0Button && mouseY>=y0Button && mouseY<=y0Button+h0Button ) {
       println("CLICKED");
       ballSpeedEasy = true;

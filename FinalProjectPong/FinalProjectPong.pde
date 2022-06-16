@@ -167,7 +167,8 @@ void keyPressed() {
 }//End keyPressed
 //
 void mousePressed() {
-  //buttonMousePressed();
+  Ball ballSpeed = new Ball(shapes.get(3).xGetter(), shapes.get(3).yGetter(), shapes.get(3).wGetter(), shapes.get(3).hGetter());
+  ballSpeed.buttonMousePressed();
 }//End mousePressed
 //
 //End Main(driver)

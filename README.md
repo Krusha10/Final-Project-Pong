@@ -18,11 +18,53 @@ MAIN Program:
 
 - Anonymous class is used to print instructions with auto-sizing text.  
     - A text calculator is used for auto-sizing of text.
+- Void setup():
+    - First the Size() parameter sets the screen to 700 by 500 pixels.
+    - Instructions is added to shapes array list as element 0.
+    - Values(x, y, w, h) for left paddle, right paddle, and ball is sent from main program to constructors.  
+    - Left paddle is added to shapes array list as element number 1.
+    - Right paddle is added to shapes array list as element number 2.
+    - Ball is added to shapes array list as element number 3.
+- Void draw():
+    - Background is set to 0(black background).
+    - The If statement checks if instructionOn variable is true and if it is, instruction panel is drawn.
+    - Next If statement checks if the instrctionOn variable is false and if it is, instruction panel is removed, then ball and Paddles are drawn. Also the class communicate. Getters are sent from one class to another.  
+- Void keyPressed():
+    - Takes care of key interaction.
+    - Nested If statements sets instructions to false if they are true otherwise they are kept on, when "I" or "i" key is pressed.  
+    - Paddles movements are controlled by keys:
+        - Left Paddle uses keys W, S, D:
+            - Key "W" or "w" moves the paddle upwards.
+                - Variable leftPaddle is temporary set to be left paddle with variables (x, y, w, h);
+                - Method upMovementPaddles() is called which sets up movement to be true and down movement to be false.
+                - Shapes sets the left paddle.
+            - Key "S" or "s" moves the paddle downwards.
+                - Variable leftPaddle is temporary set to be left paddle with variables (x, y, w, h);
+                - Method downMovementPaddles() is called which sets down movement to be true and up movement to be false.
+                - Shapes sets the left paddle.
+            - Key "D" or "d" stopes the paddle movement.
+                - Variable paddleStop is temporary set to be left paddle with variables (x, y, w, h);
+                - Method stopPaddle() is called which sets both up and down movements to be false.
+                - Shapes sets the left paddle.
+        - Right Paddle uses keys UP, DOWN, LEFT:
+            - Key "UP" moves the paddle upwards.
+                - Variable rightPaddle is temporary set to be right paddle with variables (x, y, w, h);
+                - Method upMovementPaddles() is called which sets up movement to be true and down movement to be false.
+                - Shapes sets the right paddle.
+            - Key "DOWN" moves the paddle upwards.
+                - Variable rightPaddle is temporary set to be right paddle with variables (x, y, w, h);
+                - Method downMovementPaddles() is called which sets down movement to be true and up movement to be false.
+                - Shapes sets the right paddle.
+            - Key "UP" moves the paddle upwards.
+                - Variable paddleStop is temporary set to be left paddle with variables (x, y, w, h);
+                - Method stopPaddle() is called which sets both up and down movements to be false.
+                - Shapes sets the right paddle.
+
 
 Shape Class:
 
 - Shape class is an abstract class which is extended by ball class and paddles class.
-- Variables x, y, w, h in shape class is public as those variables are used in other classes. 
+- Variables x, y, w, h in shape class is public as those variables are used in other classes.
 
 Ball Class:
 
