@@ -63,7 +63,7 @@ MAIN Program:
         - Key "V" or "v" restarts the game.
             - variables are used to call void draw() for ball and paddle class, which draws the ball and paddles.
             - Void draw() also has code for ball and paddle behavior.
-- Class communication is done through main program where a method from a class is received and send to another class. 
+- Class communication is done through main program where a method from a class is received and send to another class.
 
 Shape Class:
 
@@ -134,3 +134,23 @@ Display Method:
         - "W" and "w" keys moves the paddle upwards.
         - "S" and "s" keys moves the paddle downwards.
         - "D" and "d" keys stopes the paddle.
+
+**Finished Feature List Of Easter Eggs:**
+
+- Paddle size is decreased while the score increases:
+    - Ball class contains code for score so it sends score parameters into paddle class.
+    - Paddle class uses those score parameters to decrease paddle size.  
+    - In paddle class, paddle height is decreased while the score increases.  
+- Ball speed is controlled using keys:
+    - A variable speedBall is set to 0.
+    - If statements are used to set the keys.
+    - Slow speed, regular speed, and fast speed are 3 options for user to choose from.
+
+**Unfinished Feature List Of Easter Eggs:**
+
+- I would use Buttons instead of keys to make the game more interesting:
+    - Paddle speed, ball speed, game restart would all be controlled by buttons.
+    - I would set a Boolean which would control the speed and/or game restart.
+    - Then I would draw a button using rect().
+    - I would set the parameters for mouse pressed and if clicked I would make the Boolean true.
+    - I would make an if statement which would control variables of speed and/or restart when Boolean is true. 
