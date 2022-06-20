@@ -1,4 +1,4 @@
-final class Ball extends Shape {
+final private class Ball extends Shape {
   //Global variables
   private float diameter, x0Button, y0Button, w0Button, h0Button, buttonWidth, buttonHeight;
   private int xSpeed, ySpeed, leftGoalScore = 0, rightGoalScore = 0, speed = 0, speedBall = 0;
@@ -16,37 +16,30 @@ final class Ball extends Shape {
     h0Button = h + 1/2;
     buttonWidth = width / 5;
     buttonHeight = width / 0.05;
-    //this.xSpeed = int(random(1, 10));
-    //this.ySpeed = int(random(1, 10));
+    this.xSpeed = int(random(1, 10));
+    this.ySpeed = int(random(1, 10));
   }//End Constructor 
   //
   public void draw() {
     fill(#FFF640);
     ellipse(x, y, w, h);
     fill(resetColor);
-    buttonDraw();
-    buttonTextDraw();
-    //ballSpeed();
-    //ballMove();
-    //bounceBall();
+    //buttonTextDraw();
+    //buttonDraw();
+    ballSpeed();
     ballScore();
   }//End draw
   //BUTTON TO BE MADE:
   //
-  void buttonDraw() {
-    rect(x0Button, y0Button, w0Button, h0Button);
-    if (ballSpeedEasy == true) {
-      this.xSpeed = 2;
-      this.ySpeed = 2;
-    }
-    buttonTextSetUp();
-  }//End buttonDraw
   //
+  /*
   void buttonTextSetUp() {
     buttonTextFont = createFont("Georgia", 50);
   }
   //
-  void buttonTextDraw() {
+  private void buttonTextDraw() {
+    rect(x0Button, y0Button, w0Button, h0Button);
+    buttonTextSetUp();
     fill(#6DE5A2);
     textAlign(CENTER, CENTER);
     textFont(buttonTextFont, 20);
@@ -55,14 +48,22 @@ final class Ball extends Shape {
     fill(resetColor);
   }
   //
-  void buttonMousePressed() {
+  private void buttonMousePressed() {
     if ( mouseX>=x0Button && mouseX<=x0Button+w0Button && mouseY>=y0Button && mouseY<=y0Button+h0Button ) {
       println("CLICKED");
       ballSpeedEasy = true;
+      buttonDraw();
     }
   }//End buttonMousePressed
   //
-  /*
+  private void buttonDraw() {
+    if (ballSpeedEasy == true && speedBall == 0) speedBall = 2;
+    this.xSpeed = int((width / width) * speedBall);
+    this.ySpeed = int((height / height) * speedBall);
+    println(xSpeed);
+  }//End buttonDraw
+  //
+  */
   private void ballSpeed() {
    if (speedBall == 0 ) {
    if (key=='X' || key=='x') speedBall = 2;
@@ -71,12 +72,12 @@ final class Ball extends Shape {
    this.xSpeed = int((width / width) * speedBall);
    this.ySpeed = int((height / height) * speedBall);
    }
-   }//End ballSpeed
+ }//End ballSpeed
    //
-   */
   //
   //
   private void ballMove() {
+    println(xSpeed);
     x += xSpeed;
     y += ySpeed;
   }//End ballMove
@@ -128,7 +129,7 @@ final class Ball extends Shape {
     text(leftGoalScore, width/1.35, width*1/14);
   }//End ballScore
   //
-  void scoreSetter() {
+  private void scoreSetter() {
     if (leftGoalScore == 5 || rightGoalScore == 5) {
       if (rightGoalScore == 5) {
         background(#A58C8C);
@@ -168,25 +169,25 @@ final class Ball extends Shape {
   public void rightPaddleBounce( float xPaddleRight, float yPaddleRight, float paddleHeight) {
     if ( x >= xPaddleRight-w*1/2 && y > yPaddleRight && y < yPaddleRight+paddleHeight ) xSpeed *=-1;
   }
-  float xGetter() {
+  public float xGetter() {
     return x;
   }
-  float yGetter() {
+  public float yGetter() {
     return y;
   }
-  float wGetter() {
+  public float wGetter() {
     return w;
   }
-  float hGetter() {
+  public float hGetter() {
     return h;
   }
-  int scoreLGetter() {
+  public int scoreLGetter() {
     return rightGoalScore;
   }
-  int scoreRGetter() {
+  public int scoreRGetter() {
     return leftGoalScore;
   }
-  void scoreObjects(int rightGoalScore, int leftGoalScore) {
+  public void scoreObjects(int rightGoalScore, int leftGoalScore) {
   }
   //void playingModes(float x, float y) {}
 }//End Ball

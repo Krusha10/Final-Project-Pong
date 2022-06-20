@@ -6,14 +6,14 @@ private Shape instrctions = new Shape(width, height*1/4, 500, 450) {
   //Global variables 
   PFont titleFont;
   //
-  String note = "YAY";
+  String note = "LET'S PLAY PONG \n * To play pong click the screen and press I to remove instruction panel and to get started \n * While score moves up the paddle size will decrease and the game will get challenging \n * Ball Speed is controlled by keys: \n * Press 'X' or 'x' for slow speed and easy game\n * Press 'R' or 'r' for medium speed and regular game\n * Press 'F' or 'f' for faster speed and challenging game  \n * The game is best of 5, whoever scores 5 first wins the game";
   //
   color darkPinkInk = #D65083;
   color resetColor = #000000;
   int rightGoalScore, leftGoalScore;
   //
   //Two void draws to be fixed 
-  void draw() {
+  public void draw() {
     textSetup();
     fill(#FAF688);
     rect(x, y, w, h);//Background for instructions display
@@ -25,12 +25,12 @@ private Shape instrctions = new Shape(width, height*1/4, 500, 450) {
   //
   //Text Calculator 
   //
-  void textSetup()
+  private void textSetup()
   {
     titleFont = createFont("Georgia", 55);
   }
   //
-  void textDraw(float height, color ink, int alignHorizontal, int alignVerticle, PFont font, String string, float xRect, float yRec, float widthRec, float heightRec) 
+  private void textDraw(float height, color ink, int alignHorizontal, int alignVerticle, PFont font, String string, float xRect, float yRec, float widthRec, float heightRec) 
   {
     fill(ink);
     textAlign(alignHorizontal, alignVerticle);
@@ -40,12 +40,12 @@ private Shape instrctions = new Shape(width, height*1/4, 500, 450) {
     textReset();
   }//End textDraw()
 
-  void textReset()
+  private void textReset()
   {
     fill(resetColor); // Ink to default
   }//End textReset()
   //
-  float textCalculator(float size, String string, float widthRec) 
+  private float textCalculator(float size, String string, float widthRec) 
   {
     textSize(size);
     while (textWidth(string) > widthRec) 
@@ -56,28 +56,28 @@ private Shape instrctions = new Shape(width, height*1/4, 500, 450) {
     return size;
   }//End textCalculator
   //
-  void leftPaddleBounce(float x, float y, float h, float w) {
+  public void leftPaddleBounce(float x, float y, float h, float w) {
   }
-  void rightPaddleBounce(float x, float y, float h) {
+  public void rightPaddleBounce(float x, float y, float h) {
   }
-  void scoreObjects(int rightGoalScore, int leftGoalScore) {
+  public void scoreObjects(int rightGoalScore, int leftGoalScore) {
   }
-  float xGetter() {
+  public float xGetter() {
     return x;
   }
-  float yGetter() {
+  public float yGetter() {
     return y;
   }
-  float wGetter() {
+  public float wGetter() {
     return w;
   }
-  float hGetter() {
+  public float hGetter() {
     return h;
   }
-  int scoreLGetter() {
+  public int scoreLGetter() {
     return rightGoalScore;
   }
-  int scoreRGetter() {
+  public int scoreRGetter() {
     return leftGoalScore;
   }
   //void playingModes(float x, float y) {}
@@ -85,7 +85,8 @@ private Shape instrctions = new Shape(width, height*1/4, 500, 450) {
 ;//End instrctions
 //
 void setup() {
-  size(700, 500);
+  size(500, 700);
+  display();
   //fullScreen();
   //INSTRUCTIONS: 
   shapes.add(instrctions);//Element 0
@@ -110,7 +111,6 @@ void draw() {
   if (instructionOn == true) shapes.get(0).draw();
   //
   if (instructionOn == false) {
-    println("WOOOOOOOOOOOOOOOO");
     shapes.get(3).leftPaddleBounce(shapes.get(1).xGetter(), shapes.get(1).yGetter(), shapes.get(1).hGetter(), shapes.get(1).wGetter());
     shapes.get(3).rightPaddleBounce(shapes.get(2).xGetter(), shapes.get(2).yGetter(), shapes.get(2).hGetter());
     shapes.get(1).scoreObjects(shapes.get(3).scoreRGetter(), shapes.get(3).scoreLGetter());
@@ -164,11 +164,27 @@ void keyPressed() {
     paddleStop.stopPaddle();
     shapes.set(2, paddleStop);
   }//End Left key
+  //
+  //
+  //
+  if (key == CODED && key == 'V' || key == 'v') {
+    Paddles resetLPaddle = new Paddles(shapes.get(1).xGetter(), shapes.get(1).yGetter(), shapes.get(1).wGetter(), shapes.get(1).hGetter());
+    resetLPaddle.draw();
+    resetLPaddle.resetPaddle();
+    shapes.set(1, resetLPaddle);
+    Paddles resetRPaddle = new Paddles(shapes.get(2).xGetter(), shapes.get(2).yGetter(), shapes.get(2).wGetter(), shapes.get(2).hGetter());
+    resetRPaddle.draw();
+    resetRPaddle.resetPaddle();
+    shapes.set(2, resetRPaddle);
+    Ball resetBall = new Ball(shapes.get(3).xGetter(), shapes.get(3).yGetter(), shapes.get(3).wGetter(), shapes.get(3).hGetter());
+    resetBall.draw();
+    shapes.set(3, resetBall);
+  }//End D key
 }//End keyPressed
 //
 void mousePressed() {
-  Ball ballSpeed = new Ball(shapes.get(3).xGetter(), shapes.get(3).yGetter(), shapes.get(3).wGetter(), shapes.get(3).hGetter());
-  ballSpeed.buttonMousePressed();
+  //Ball ballSpeed = new Ball(shapes.get(3).xGetter(), shapes.get(3).yGetter(), shapes.get(3).wGetter(), shapes.get(3).hGetter());
+  //ballSpeed.buttonMousePressed();
 }//End mousePressed
 //
 //End Main(driver)

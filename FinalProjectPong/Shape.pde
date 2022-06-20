@@ -1,4 +1,4 @@
-abstract class Shape {
+abstract private class Shape {
   //Global variables 
   public float x, y, w, h;
   //
@@ -13,14 +13,14 @@ abstract class Shape {
   public abstract void draw();
   //
   //Common Methods
-  abstract void leftPaddleBounce(float x, float y, float h, float w);
-  abstract void rightPaddleBounce(float x, float y, float h);
-  abstract void scoreObjects(int rightGoalScore, int leftGoalScore);
+  abstract public void leftPaddleBounce(float x, float y, float h, float w);
+  abstract public void rightPaddleBounce(float x, float y, float h);
+  abstract public void scoreObjects(int rightGoalScore, int leftGoalScore);
   //abstract void playingModes(float x, float y) ;
-  abstract float xGetter();
-  abstract float yGetter();
-  abstract float wGetter();
-  abstract float hGetter();
-  abstract int scoreLGetter();
-  abstract int scoreRGetter();
+  abstract public float xGetter();
+  abstract public float yGetter();
+  abstract public float wGetter();
+  abstract public float hGetter();
+  abstract public int scoreLGetter();
+  abstract public int scoreRGetter();
 }//End Shape

@@ -1,4 +1,4 @@
-final class Paddles extends Shape {
+final private class Paddles extends Shape {
   //Global variables
   private Boolean moveUp, moveDown, screenSaver = false, singlePlayer = false;
   private int yMove, paddleSpeed = 0, rightGoalScore, leftGoalScore;
@@ -30,6 +30,10 @@ final class Paddles extends Shape {
     //
   }//End paddleMove
   //
+  //
+  private void resetPaddle() {
+    h = height*1/4;
+  }//End resetPaddle
   //Setters
   private void upMovementPaddles() {
     moveUp = true;
@@ -48,29 +52,29 @@ final class Paddles extends Shape {
   //
   //
   //Getters
-  void leftPaddleBounce(float x, float y, float h, float w) {
+  public void leftPaddleBounce(float x, float y, float h, float w) {
   }
-  void rightPaddleBounce(float x, float y, float h) {
+  public void rightPaddleBounce(float x, float y, float h) {
   }
-  float xGetter() {
+  public float xGetter() {
     return x;
   }
-  float yGetter() {
+  public float yGetter() {
     return y;
   }
-  float wGetter() {
+  public float wGetter() {
     return w;
   }
-  float hGetter() {
+  public float hGetter() {
     return h;
   }
-  int scoreLGetter() {
+  public int scoreLGetter() {
     return rightGoalScore;
   }
-  int scoreRGetter() {
+  public int scoreRGetter() {
     return leftGoalScore;
   }
-  void scoreObjects(int rightScore, int leftScore) {
+  public void scoreObjects(int rightScore, int leftScore) {
     if (leftScore == 2 || rightScore == 2) h = int(height*1/5);
     if (leftScore == 3 || rightScore == 3) h = int(height*1/6); 
     if (leftScore == 4 || rightScore == 4) h = int(height*1/7);
