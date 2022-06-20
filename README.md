@@ -59,12 +59,18 @@ MAIN Program:
                 - Variable paddleStop is temporary set to be left paddle with variables (x, y, w, h);
                 - Method stopPaddle() is called which sets both up and down movements to be false.
                 - Shapes sets the right paddle.
-
+    - Game could be restarted using a specific key.:
+        - Key "V" or "v" restarts the game.
+            - variables are used to call void draw() for ball and paddle class, which draws the ball and paddles.
+            - Void draw() also has code for ball and paddle behavior.
+- Class communication is done through main program where a method from a class is received and send to another class. 
 
 Shape Class:
 
 - Shape class is an abstract class which is extended by ball class and paddles class.
 - Variables x, y, w, h in shape class is public as those variables are used in other classes.
+- Shape class is used for class communication.
+- Shape class includes common methods form ball class and paddle class which is used for class communication from main program.
 
 Ball Class:
 
@@ -102,7 +108,13 @@ Paddles Class:
         - Few other If statements check if the paddles are going off the screen.
               - If statement sets the range so the paddle doesn't go off the screen.
               - Paddle speed is set to 0 if paddle reaches the edge.
-        -
+
+
+Display Method:
+
+- Display method checks if the screen is landscape or portrait.
+- If it is landscape the game works fine.
+- If the screen is portrait the game would work but not as nicely as it would with landscape mode.
 
 **Instructions On How To Use The Program:**
 
